@@ -7,16 +7,15 @@ import { toggleMessage } from "./actions";
 const Toggle = ({ messageVisibility, toggleMessage }) => (
   <div>
     {messageVisibility &&
-    <p>You will be seeing this is redux action is toggeld</p>
+      <p>You will be seeing this is redux action is toggeld</p>
     }
     <button onClick={toggleMessage}>Toggle Me
     </button>
   </div>
 );
 
-
 const mapStateToProps = state => ({
-  messageVisibility: state.message.messageVisibility,
+  messageVisibility: state.toggle.messageVisibility,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

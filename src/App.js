@@ -6,21 +6,25 @@ import {
   Link,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import logger from "redux-logger";
+import thunk from "redux-thunk";
 import styled from "styled-components";
 import "./App.css";
 
 import rootReducer from "./rootReducer";
 
-import MoviesList from "./MoviesList";
-import MovieDetail from "./MovieDetail";
-import Toggle from "./Toggle";
+import MoviesList from "./Movies/MoviesList";
+import MovieDetail from "./Movies/MovieDetail";
+import Toggle from "./Toggle/Toggle";
+
+const middleware = [logger, thunk];
 
 const store = createStore(
   rootReducer,
   {},
-  composeWithDevTools(),
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 const App = () => (
